@@ -857,7 +857,7 @@
     "attributes": [
       { "name": "varType", "type": "TypeAttr" },
       { "name": "descKind", "type": "DefaultValuedAttr<OpenACC_DataDescKindAttr{none|cfi|memref|openacc; separator=','}, mlir::acc::DataDescKind::none>" },
-      { "name": "mapFlags", "type": "DefaultValuedAttr<OpenACC_MapFlagsAttr{none|to|from|delete|ptr_and_obj|private|literal|implicit|devptr|managed_devptr|no_create|gang_private|worker_private|vector_private|init_zero|device_resident|if_present|present|descriptor|reduction|attach|detach; separator=','}, mlir::acc::MapFlags::none>" },
+      { "name": "mapFlags", "type": "DefaultValuedAttr<OpenACC_MapFlagsAttr{none|to|from|delete|ptr_and_obj|private|literal|implicit|devptr|managed_devptr|no_create|gang_private|worker_private|vector_private|init_zero|device_resident|if_present|present|descriptor|reduction|attach|detach|no_device_descriptor; separator=','}, mlir::acc::MapFlags::none>" },
       { "name": "name", "type": "OptionalAttr<StrAttr>" },
       { "name": "elementSize", "type": "OptionalAttr<ConfinedAttr<I64Attr, [ IntNonNegative ]>>" },
       { "name": "exitLoc", "type": "OptionalAttr<LocationAttr>" }
