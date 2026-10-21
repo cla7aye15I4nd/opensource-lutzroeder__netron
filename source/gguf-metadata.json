@@ -183,7 +183,8 @@
       ],
       "output": [
         { "name": "output_norm", "type": "RMS_NORM", "category": "Normalization" },
-        { "name": "output", "type": "MUL_MAT" }
+        { "name": "output", "type": "MUL_MAT" },
+        { "name": "dense_2", "type": "MUL_MAT" }
       ]
     }
   },
