@@ -16671,6 +16671,69 @@
     ]
   },
   {
+    "name": "DepthToSpace",
+    "module": "com.ms.internal.nhwc",
+    "version": 28,
+    "description": "DepthToSpace rearranges (permutes) data from depth into blocks of spatial data.\nThis is the reverse transformation of SpaceToDepth. More specifically, this op outputs a copy of\nthe input tensor where values from the depth dimension are moved in spatial blocks to the height\nand width dimensions. By default, `mode` = `DCR`.\nIn the DCR mode, elements along the depth dimension from the input tensor are rearranged in the\nfollowing order: depth, column, and then row. The output y is computed from the input x as below:\n\n```\nb, c, h, w = x.shape\ntmp = np.reshape(x, [b, blocksize, blocksize, c // (blocksize**2), h, w])\ntmp = np.transpose(tmp, [0, 3, 4, 1, 5, 2])\ny = np.reshape(tmp, [b, c // (blocksize**2), h * blocksize, w * blocksize])\n```\n\nIn the CRD mode, elements along the depth dimension from the input tensor are rearranged in the\nfollowing order: column, row, and the depth. The output y is computed from the input x as below:\n\n```\nb, c, h, w = x.shape\ntmp = np.reshape(x, [b, c // (blocksize ** 2), blocksize, blocksize, h, w])\ntmp = np.transpose(tmp, [0, 1, 4, 2, 5, 3])\ny = np.reshape(tmp, [b, c // (blocksize ** 2), h * blocksize, w * blocksize])\n```\n",
+    "attributes": [
+      {
+        "name": "blocksize",
+        "type": "int64",
+        "required": true,
+        "description": "Blocks of [blocksize, blocksize] are moved."
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "required": false,
+        "default": "DCR",
+        "description": "DCR (default) for depth-column-row order re-arrangement. Use CRD for column-row-depth order."
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input",
+        "type": "T",
+        "description": "Input tensor of [N,C,H,W], where N is the batch axis, C is the channel or depth, H is the height and W is the width."
+      }
+    ],
+    "min_input": 1,
+    "max_input": 1,
+    "outputs": [
+      {
+        "name": "output",
+        "type": "T",
+        "description": "Output tensor of [N, C/(blocksize * blocksize), H * blocksize, W * blocksize]."
+      }
+    ],
+    "min_output": 1,
+    "max_output": 1,
+    "type_constraints": [
+      {
+        "description": "Constrain input and output types to all tensor types.",
+        "type_param_str": "T",
+        "allowed_type_strs": [
+          "tensor(uint8)",
+          "tensor(uint16)",
+          "tensor(uint32)",
+          "tensor(uint64)",
+          "tensor(int8)",
+          "tensor(int16)",
+          "tensor(int32)",
+          "tensor(int64)",
+          "tensor(bfloat16)",
+          "tensor(float16)",
+          "tensor(float)",
+          "tensor(double)",
+          "tensor(string)",
+          "tensor(bool)",
+          "tensor(complex64)",
+          "tensor(complex128)"
+        ]
+      }
+    ]
+  },
+  {
     "name": "DequantizeBFP",
     "module": "com.microsoft",
     "version": 1,
@@ -48578,12 +48641,12 @@
       {
         "name": "past_seqlens",
         "type": "S",
-        "description": "A tensor with shape (batch_size). It specifies the past lengths of cached sequence in the KV cache."
+        "description": "A tensor with shape (batch_size). It specifies the past lengths of cached sequences. CUDA sanitizes malformed values on device: an invalid value suppresses that sequence's cache writes and produces zero output. A backend requiring exact host lengths may instead return INVALID_ARGUMENT when attention_metadata is absent."
       },
       {
         "name": "block_table",
         "type": "S",
-        "description": "2D tensor with shape (batch_size, max_blocks_per_sequence) that maps each sequence in the batch to itscorresponding blocks in the KV cache."
+        "description": "2D tensor with shape (batch_size, max_blocks_per_sequence) that maps each sequence in the batch to itscorresponding blocks in the KV cache. -1 denotes an unmapped page. CUDA converts values below -1 or greater than or equal to num_blocks to the unmapped sentinel before resolving cache addresses; mapped pages remain attendable."
       },
       {
         "name": "cos_cache",
@@ -69649,6 +69712,69 @@
         "type": "int64",
         "required": true,
         "description": "Blocks of [blocksize, blocksize] are moved."
+      }
+    ],
+    "inputs": [
+      {
+        "name": "input",
+        "type": "T",
+        "description": "Input tensor of [N,C,H,W], where N is the batch axis, C is the channel or depth, H is the height and W is the width."
+      }
+    ],
+    "min_input": 1,
+    "max_input": 1,
+    "outputs": [
+      {
+        "name": "output",
+        "type": "T",
+        "description": "Output tensor of [N, C * blocksize * blocksize, H/blocksize, W/blocksize]."
+      }
+    ],
+    "min_output": 1,
+    "max_output": 1,
+    "type_constraints": [
+      {
+        "description": "Constrain input and output types to all tensor types.",
+        "type_param_str": "T",
+        "allowed_type_strs": [
+          "tensor(uint8)",
+          "tensor(uint16)",
+          "tensor(uint32)",
+          "tensor(uint64)",
+          "tensor(int8)",
+          "tensor(int16)",
+          "tensor(int32)",
+          "tensor(int64)",
+          "tensor(bfloat16)",
+          "tensor(float16)",
+          "tensor(float)",
+          "tensor(double)",
+          "tensor(string)",
+          "tensor(bool)",
+          "tensor(complex64)",
+          "tensor(complex128)"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SpaceToDepth",
+    "module": "com.ms.internal.nhwc",
+    "version": 28,
+    "description": "SpaceToDepth rearranges blocks of spatial data into depth. More specifically,\nthis op outputs a copy of the input tensor where values from the height and width dimensions\nare moved to the depth dimension. `mode` determines whether blocks are ordered depth-column-row\n(`DCR`, the default) or column-row-depth (`CRD`).",
+    "attributes": [
+      {
+        "name": "blocksize",
+        "type": "int64",
+        "required": true,
+        "description": "Blocks of [blocksize, blocksize] are moved."
+      },
+      {
+        "name": "mode",
+        "type": "string",
+        "required": false,
+        "default": "DCR",
+        "description": "DCR (default) for depth-column-row order re-arrangement. Use CRD for column-row-depth order."
       }
     ],
     "inputs": [
