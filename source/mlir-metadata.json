@@ -10806,7 +10806,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -10822,7 +10822,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -10838,7 +10838,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -10854,7 +10854,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -10870,7 +10870,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -10886,7 +10886,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -10902,7 +10902,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -10918,7 +10918,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -10934,7 +10934,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -10950,7 +10950,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -10966,7 +10966,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -10982,7 +10982,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -10998,7 +10998,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11014,7 +11014,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11030,7 +11030,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11122,7 +11122,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11138,7 +11138,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11154,7 +11154,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11170,7 +11170,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11186,7 +11186,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11202,7 +11202,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11218,7 +11218,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11234,7 +11234,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11250,7 +11250,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11266,7 +11266,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11282,7 +11282,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11298,7 +11298,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11314,7 +11314,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11330,7 +11330,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11346,7 +11346,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -11362,7 +11362,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -46109,7 +46109,7 @@
   {
     "name": "rocdl.load.async.to.lds",
     "summary": "Gathering load to LDS that requires explicit async memory tracking",
-    "description": "Load `size` bytes (the valid sizes vary by architecture) from the global memory\n    pointed to by `globalPtr` and put them at `ldsPtr`, concantenating (and applying\n    padding for sizes less than 4 bytes, along with padding out 12-byte reads\n    to 16-byte writes). The value of `globalPtr` can vary between lanes, while\n    `sharedPtr` must be subgroup-uniform (the values from each lane are concatentated\n    before being written to LDS with appropriate padding applied.)\n\n    `offset` is a constant offset applied to **both** pointers, and `aux` sets the cache\n    policy. Unlike `rocdl.load.to.lds`, the compiler will not automatically inserts waits\n    for this load to complete at the point it thinks you're using a region of LDS you've\n    stored values to - you need to use the `rocdl.asyncmark` and `rocdl.wait.asyncmark`\n    operations to explicitly group these operations and wait for their completion.\n\n    Available on gfx10 and earlier with varying suppported values of `size`.\n\n    Example:\n    ```mlir\n    // Async load 4 bytes from global pointer to LDS.\n    rocdl.load.async.to.lds %global, %shared, 4, 0, 0 : !llvm.ptr<1>, !llvm.ptr<3>\n\n    // Async load 4 bytes from fat buffer pointer to LDS.\n    rocdl.load.async.to.lds %fatBuffer, %shared, 4, 0, 0 : !llvm.ptr<7>, !llvm.ptr<3>\n    ```",
+    "description": "Load `size` bytes (the valid sizes vary by architecture) from the global memory\n    pointed to by `globalPtr` and put them at `ldsPtr`, concantenating (and applying\n    padding for sizes less than 4 bytes, along with padding out 12-byte reads\n    to 16-byte writes). The value of `globalPtr` can vary between lanes, while\n    `sharedPtr` must be subgroup-uniform (the values from each lane are concatentated\n    before being written to LDS with appropriate padding applied.)\n\n    `offset` is a constant offset applied to **both** pointers, and `aux` sets the cache\n    policy. Unlike `rocdl.load.to.lds`, the compiler will not automatically inserts waits\n    for this load to complete at the point it thinks you're using a region of LDS you've\n    stored values to - you need to use the `rocdl.asyncmark` and `rocdl.wait.asyncmark`\n    operations to explicitly group these operations and wait for their completion.\n\n    Available on gfx10 and earlier with varying supported values of `size`.\n\n    Example:\n    ```mlir\n    // Async load 4 bytes from global pointer to LDS.\n    rocdl.load.async.to.lds %global, %shared, 4, 0, 0 : !llvm.ptr<1>, !llvm.ptr<3>\n\n    // Async load 4 bytes from fat buffer pointer to LDS.\n    rocdl.load.async.to.lds %fatBuffer, %shared, 4, 0, 0 : !llvm.ptr<7>, !llvm.ptr<3>\n    ```",
     "operands": [
       { "name": "globalPtr", "type": "LLVM_AnyPointer" },
       { "name": "ldsPtr", "type": "ROCDLBufferLDS" }
@@ -88839,7 +88839,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -88855,7 +88855,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict",
+    "assemblyFormat": "prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -90565,7 +90565,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "$args attr-dict `:` type($args)",
+    "assemblyFormat": "$args prop-dict attr-dict `:` type($args)",
     "hasCustomAssemblyFormat": true
   },
   {
@@ -91319,7 +91319,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "operands attr-dict",
+    "assemblyFormat": "operands prop-dict attr-dict",
     "hasCustomAssemblyFormat": true
   },
   {
