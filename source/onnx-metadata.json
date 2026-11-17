@@ -45889,6 +45889,102 @@
     "category": "Attention"
   },
   {
+    "name": "MultiHeadLatentAttention",
+    "module": "com.microsoft",
+    "version": 1,
+    "description": "Multi-head latent attention (MLA) in absorbed form, with a KV cache, as used by DeepSeek-V2 and DeepSeek-V3.\n\nAll query heads attend over one cache of latent rows. Each cached row (head_size wide) is the key for every head, and\nchannels [v_offset, v_offset + v_head_size) of the same row are the value. The caller folds the key up-projection into\nthe query and the value up-projection into the output projection, so the op never materializes per-head keys or values.\nIn DeepSeek-V2 and DeepSeek-V3 a row is the 512-channel latent followed by the 64 RoPE channels: head_size = 576,\nv_head_size = 512 and v_offset = 0.\n\nThe cache contract is GroupQueryAttention's with kv_num_heads = 1 and do_rotary = 0. A first prompt\n(sequence_length == total_sequence_length) writes its rows from row 0, and an entry may be right-padded\n(seqlens_k + 1 < sequence_length). Otherwise the new rows in 'key' are written at rows\n[seqlens_k + 1 - sequence_length, seqlens_k + 1) of each batch entry. present_kv has length\nmax(total_sequence_length, past length); past_kv and present_kv may share one buffer of length max_sequence_length.\nOnly filled rows are read, and new tokens attend causally.\n\nWith v_offset = 0 the cache has the layout PagedAttention uses with kv_cache_layout = LATENT, restricted to one\nblock per sequence.\n",
+    "attributes": [
+      {
+        "name": "num_heads",
+        "type": "int64",
+        "required": true,
+        "description": "Number of attention heads for q"
+      },
+      {
+        "name": "scale",
+        "type": "float32",
+        "required": true,
+        "description": "Scale applied to Q*K' before softmax. Required: after absorption it is the original model's 1/sqrt(qk_nope_head_dim + qk_rope_head_dim), times any RoPE scaling factor, not 1/sqrt(head_size)."
+      },
+      {
+        "name": "v_head_size",
+        "type": "int64",
+        "required": true,
+        "description": "Width of the value read from each cached row, and of each output head (kv_lora_rank). Must satisfy 0 < v_head_size and v_offset + v_head_size <= head_size."
+      },
+      {
+        "name": "v_offset",
+        "type": "int64",
+        "required": false,
+        "description": "First channel of the value within each cached row. 0 when rows are stored as [latent | rope], rope_dim when stored as [rope | latent]. Default value is 0."
+      }
+    ],
+    "inputs": [
+      {
+        "name": "query",
+        "type": "T",
+        "description": "Absorbed query with shape (batch_size, sequence_length, num_heads * head_size), RoPE already applied."
+      },
+      {
+        "name": "key",
+        "type": "T",
+        "description": "New latent rows with shape (batch_size, sequence_length, head_size), RoPE already applied."
+      },
+      {
+        "name": "past_kv",
+        "type": "T",
+        "option": "optional",
+        "description": "Latent cache with shape (batch_size, 1, past_sequence_length, head_size), or (batch_size, 1, max_sequence_length, head_size) when it shares its buffer with present_kv."
+      },
+      {
+        "name": "seqlens_k",
+        "type": "M",
+        "description": "1D tensor of shape (batch_size). Equivalent to (total_sequence_lengths - 1)."
+      },
+      {
+        "name": "total_sequence_length",
+        "type": "M",
+        "description": "Scalar tensor: the maximum total sequence length (past + new) of the batch. Equal to sequence_length for a first prompt."
+      }
+    ],
+    "min_input": 5,
+    "max_input": 5,
+    "outputs": [
+      {
+        "name": "output",
+        "type": "T",
+        "description": "3D output tensor with shape (batch_size, sequence_length, num_heads * v_head_size)"
+      },
+      {
+        "name": "present_kv",
+        "type": "T",
+        "option": "optional",
+        "description": "Updated latent cache with shape (batch_size, 1, present_sequence_length, head_size), where present_sequence_length = max(total_sequence_length, past_sequence_length). When past_kv shares its buffer with present_kv, it has length max_sequence_length and is updated in place."
+      }
+    ],
+    "min_output": 1,
+    "max_output": 2,
+    "outputs_range": "1 - 2",
+    "type_constraints": [
+      {
+        "description": "Constrain input, output and cache to float tensors.",
+        "type_param_str": "T",
+        "allowed_type_strs": [
+          "tensor(float16)",
+          "tensor(bfloat16)",
+          "tensor(float)"
+        ]
+      },
+      {
+        "description": "Constrain sequence lengths to int32 tensors.",
+        "type_param_str": "M",
+        "allowed_type_strs": [
+          "tensor(int32)"
+        ]
+      }
+    ]
+  },
+  {
     "name": "MultilevelCropAndResize_TRT",
     "module": "ai.onnx",
     "version": 1,

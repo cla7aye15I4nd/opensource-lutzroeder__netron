@@ -32181,7 +32181,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "`(` $args `)` attr-dict `:` functional-type($args, $handle)"
+    "assemblyFormat": "`(` $args `)` prop-dict attr-dict `:` functional-type($args, $handle)"
   },
   {
     "name": "mlrt.await_all_control",
@@ -70386,7 +70386,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "`(` $args `)` attr-dict `:` functional-type($args, $results)"
+    "assemblyFormat": "`(` $args `)` prop-dict attr-dict `:` functional-type($args, $results)"
   },
   {
     "name": "tf_mlrt.async_executeop.device",
@@ -70406,7 +70406,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "`(` $device`)` `(` $args `)` attr-dict `:` functional-type($args, $results)"
+    "assemblyFormat": "`(` $device`)` `(` $args `)` prop-dict attr-dict `:` functional-type($args, $results)"
   },
   {
     "name": "tf_mlrt.async_ifrt_call",
@@ -70425,7 +70425,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "`(` $args `)` attr-dict `:` functional-type($args, $results)"
+    "assemblyFormat": "`(` $args `)` prop-dict attr-dict `:` functional-type($args, $results)"
   },
   {
     "name": "tf_mlrt.async_while",
@@ -70445,7 +70445,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "$body_fn `(` $cond `,` $arguments `)` attr-dict `:` `(` type($cond) `,` type($arguments) `)` `->` `(` type(results) `)`"
+    "assemblyFormat": "$body_fn `(` $cond `,` $arguments `)` prop-dict attr-dict `:` `(` type($cond) `,` type($arguments) `)` `->` `(` type(results) `)`"
   },
   {
     "name": "tf_mlrt.await",
@@ -70480,7 +70480,7 @@
   {
     "name": "tf_mlrt.batch_function",
     "summary": "Fallback ExecuteOp specialized for tf.BatchFunction.",
-    "description": "This kernel executes a variant tf.BatchFunction kernel that supports having\n    the `f` attribute as a bytecode function.\n\n    Example:\n      %res = tf_mlrt.batch_function(%input, %captured_input)  {\n          device = \"/device:CPU:0\",\n          f = @batch_function,\n          node_def = \"...\"\n        } : (!tf_mlrt.tensor,!tf_mlrt.tensor) -> (!tf_mlrt.tensor)\n\n    Note that the trailing number indicates the number of results.",
+    "description": "This kernel executes a variant tf.BatchFunction kernel that supports having\n    the `f` attribute as a bytecode function.\n\n    Example:\n      %res = tf_mlrt.batch_function(%input, %captured_input) <\n          device = \"/device:CPU:0\",\n          f = @batch_function,\n          node_def = \"...\"\n        > : (!tf_mlrt.tensor,!tf_mlrt.tensor) -> (!mlrt.future)\n\n    Note that the trailing number indicates the number of results.",
     "operands": [
       { "name": "args", "type": "Variadic<TFTensorType>" }
     ],
@@ -70495,12 +70495,12 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "`(` $args `)` attr-dict `:` functional-type($args, $results)"
+    "assemblyFormat": "`(` $args `)` prop-dict attr-dict `:` functional-type($args, $results)"
   },
   {
     "name": "tf_mlrt.batch_function.device",
     "summary": "Fallback ExecuteOp specialized for tf.BatchFunction with custom device.",
-    "description": "This kernel executes a variant tf.BatchFunction kernel that supports having\n    the `f` attribute as a bytecode function with a custom device.\n\n    Example:\n      %res = tf_mlrt.batch_function.device(%custom_device, %input, %captured_input)  {\n          device = \"/device:CPU:0\",\n          f = @batch_function,\n          node_def = \"...\"\n        } : (!tf_mlrt.tensor,!tf_mlrt.tensor) -> (!tf_mlrt.tensor)\n\n    Note that the trailing number indicates the number of results.\n    Also note that the custom device argument is not the same as the device attribute. \n    The latter is just the name in which the enclosure graph is executed.",
+    "description": "This kernel executes a variant tf.BatchFunction kernel that supports having\n    the `f` attribute as a bytecode function with a custom device.\n\n    Example:\n      %res = tf_mlrt.batch_function.device(%custom_device)(%input, %captured_input) <\n          device = \"/device:CPU:0\",\n          f = @batch_function,\n          node_def = \"...\"\n        > : (!tf_mlrt.tensor,!tf_mlrt.tensor) -> (!mlrt.future)\n\n    Note that the trailing number indicates the number of results.\n    Also note that the custom device argument is not the same as the device attribute. \n    The latter is just the name in which the enclosure graph is executed.",
     "operands": [
       { "name": "custom_device", "type": "TFDeviceType" },
       { "name": "args", "type": "Variadic<TFTensorType>" }
@@ -70516,7 +70516,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "`(` $custom_device`)` `(` $args `)` attr-dict `:` functional-type($args, $results)"
+    "assemblyFormat": "`(` $custom_device`)` `(` $args `)` prop-dict attr-dict `:` functional-type($args, $results)"
   },
   {
     "name": "tf_mlrt.bool_to_tensor",
@@ -70554,7 +70554,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict"
+    "assemblyFormat": "prop-dict attr-dict"
   },
   {
     "name": "tf_mlrt.createop",
@@ -70567,7 +70567,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict"
+    "assemblyFormat": "prop-dict attr-dict"
   },
   {
     "name": "tf_mlrt.executeop",
@@ -70586,7 +70586,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "`(` $args `)` attr-dict `:` functional-type($args, $results)"
+    "assemblyFormat": "`(` $args `)` prop-dict attr-dict `:` functional-type($args, $results)"
   },
   {
     "name": "tf_mlrt.executeop.device",
@@ -70606,7 +70606,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "`(` $device`)` `(` $args `)` attr-dict `:` functional-type($args, $results)"
+    "assemblyFormat": "`(` $device`)` `(` $args `)` prop-dict attr-dict `:` functional-type($args, $results)"
   },
   {
     "name": "tf_mlrt.get_resource",
@@ -70621,7 +70621,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict `:` type($results)"
+    "assemblyFormat": "prop-dict attr-dict `:` type($results)"
   },
   {
     "name": "tf_mlrt.ifrt_load_variable",
@@ -70698,7 +70698,7 @@
       { "type": "AttrSizedOperandSegments" },
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "`(`$max_iterations`,` $tensor_list_or_flow_in`,` $invariant_args `)` attr-dict `:` functional-type(operands, results)"
+    "assemblyFormat": "`(`$max_iterations`,` $tensor_list_or_flow_in`,` $invariant_args `)` prop-dict attr-dict `:` functional-type(operands, results)"
   },
   {
     "name": "tf_mlrt.predicate",
@@ -70767,7 +70767,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "operands attr-dict"
+    "assemblyFormat": "operands prop-dict attr-dict"
   },
   {
     "name": "tf_mlrt.tensor_to_int32",
@@ -87402,7 +87402,7 @@
   {
     "name": "tfrt_fallback_async.const_string_tensor",
     "summary": "Create a constant string tensorflow tensor.",
-    "description": "ConstStringTensorOp creates a constant string tensorflow tensor.\n\n    Example:\n      %tensor = tfrt_fallback_async.const_string_tensor {shape = [1, 2], value = [\"const\", \"string\"]}\n\n    Note: if the entries in `value` are all the same, we can just keep one copy.\n      In other words, the following two lines are effectively the same.\n      %tensor = tfrt_fallback_async.const_string_tensor {shape = [1, 2], value = [\"string\", \"string\"]}\n      %tensor = tfrt_fallback_async.const_string_tensor {shape = [1, 2], value = [\"string\"]}",
+    "description": "ConstStringTensorOp creates a constant string tensorflow tensor.\n\n    Example:\n      %tensor = tfrt_fallback_async.const_string_tensor <shape = [1, 2], value = [\"const\", \"string\"]>\n\n    Note: if the entries in `value` are all the same, we can just keep one copy.\n      In other words, the following two lines are effectively the same.\n      %tensor = tfrt_fallback_async.const_string_tensor <shape = [1, 2], value = [\"string\", \"string\"]>\n      %tensor = tfrt_fallback_async.const_string_tensor <shape = [1, 2], value = [\"string\"]>",
     "results": [
       { "name": "result", "type": "TFTensorType" }
     ],
@@ -87413,7 +87413,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict"
+    "assemblyFormat": "prop-dict attr-dict"
   },
   {
     "name": "tfrt_fallback_async.const_tensor_proto",
@@ -87461,7 +87461,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "operands attr-dict `:` `(` type($args) `)` `->` `(` type($results) `)`"
+    "assemblyFormat": "operands prop-dict attr-dict `:` `(` type($args) `)` `->` `(` type($results) `)`"
   },
   {
     "name": "tfrt_fallback_async.createop",
@@ -87600,7 +87600,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "operands attr-dict `:` `(` type($args) `)` `->` `(` type($results) `)`"
+    "assemblyFormat": "operands prop-dict attr-dict `:` `(` type($args) `)` `->` `(` type($results) `)`"
   },
   {
     "name": "tfrt_fallback_async.get_resource",
@@ -87620,7 +87620,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "operands attr-dict `:` `(` type($in_ch) `)` `->` `(` type($out_ch) `,` type($results) `)`"
+    "assemblyFormat": "operands prop-dict attr-dict `:` `(` type($in_ch) `)` `->` `(` type($out_ch) `,` type($results) `)`"
   },
   {
     "name": "tfrt_fallback_async.predicate",
@@ -87655,7 +87655,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "operands attr-dict"
+    "assemblyFormat": "operands prop-dict attr-dict"
   },
   {
     "name": "tfrt_fallback_sync.convert_dht_to_fallback_tensor",
@@ -87713,7 +87713,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict"
+    "assemblyFormat": "prop-dict attr-dict"
   },
   {
     "name": "tfrt_fallback_sync.executeop",
@@ -87729,7 +87729,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "`(`operands`)` attr-dict `:` functional-type(operands, results)"
+    "assemblyFormat": "`(`operands`)` prop-dict attr-dict `:` functional-type(operands, results)"
   },
   {
     "name": "tfrt_fallback_sync.get_resource",
@@ -87744,7 +87744,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict `:` type($results)"
+    "assemblyFormat": "prop-dict attr-dict `:` type($results)"
   },
   {
     "name": "tfrt_fallback_sync.get_resource_dht",
@@ -87759,7 +87759,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict `:` type($results)"
+    "assemblyFormat": "prop-dict attr-dict `:` type($results)"
   },
   {
     "name": "tfrt_fallback_sync.get_sparse_matrix_resource",
@@ -87774,7 +87774,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "attr-dict `:` type($results)"
+    "assemblyFormat": "prop-dict attr-dict `:` type($results)"
   },
   {
     "name": "tfrt_fallback_sync.set_resource",
@@ -87789,7 +87789,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "operands attr-dict"
+    "assemblyFormat": "operands prop-dict attr-dict"
   },
   {
     "name": "tfrt_fallback_sync.set_resource_dht",
@@ -87804,7 +87804,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "operands attr-dict"
+    "assemblyFormat": "operands prop-dict attr-dict"
   },
   {
     "name": "tfrt_fallback_sync.set_sparse_matrix_resource",
@@ -87819,7 +87819,7 @@
     "traits": [
       { "type": "IsolatedFromAbove" }
     ],
-    "assemblyFormat": "operands attr-dict"
+    "assemblyFormat": "operands prop-dict attr-dict"
   },
   {
     "name": "tfrt_tensor.bitcast",
@@ -113057,6 +113057,11 @@
     "assemblyFormat": "attr-dict"
   },
   {
+    "name": "transform.apply_patterns.arm_sve.vector_contract_to_indexed_fmla",
+    "description": "Apply patterns to lower `vector.contract` to SVE's indexed FMLAs, where\n    `vector.contract` is a matrix multiplication with types matching the\n    following: \n\n    ```\n      vector.contract #matmul_trait %lhs, %rhs, %acc\n        vector<1x4xf32>, vector<4x[8]xf32> into vector<1x[8]xf32>\n    ```\n\n    (`#matmul_trait` contains indexing maps and iterator specification specific\n    to matrix multiplication).",
+    "assemblyFormat": "attr-dict"
+  },
+  {
     "name": "transform.apply_patterns.canonicalization",
     "summary": "Populates canonicalization patterns",
     "description": "This op populates all canonicalization patterns of all loaded dialects in\n    an `apply_patterns` transform.",
@@ -117898,6 +117903,22 @@
       { "type": "SameOperandsAndResultType" }
     ],
     "assemblyFormat": "$x `,` $min `,` $max `,` `propagateNan` `=` $propagateNan attr-dict `:` type($result)"
+  },
+  {
+    "name": "tt.clmul",
+    "summary": "Low N bits of the carry-less product of two N-bit integers",
+    "description": "Multiplies the operands as binary polynomials over GF(2), replacing\n        addition with XOR, and returns the low N bits. Signed operands are\n        interpreted by their bit patterns. Tensor operands operate elementwise.",
+    "operands": [
+      { "name": "x", "type": "TT_IntLike" },
+      { "name": "y", "type": "TT_IntLike" }
+    ],
+    "results": [
+      { "name": "result", "type": "TT_IntLike" }
+    ],
+    "traits": [
+      { "type": "SameOperandsAndResultType" }
+    ],
+    "assemblyFormat": "$x `,` $y attr-dict `:` type($x)"
   },
   {
     "name": "tt.descriptor_gather",
@@ -126109,11 +126130,14 @@
   {
     "name": "ttng.tc_gen5_commit",
     "summary": "make an mbarrier track completion of all prior async tcgen5 ops",
-    "description": "The `ttng.tc_gen5_commit` is an asynchronous operation that makes the\n    mbarrier object track the completion of all prior asynchronous tcgen5\n    operations. Upon completion of all asynchronous operations, the mbarrier\n    arrive operation is performed on the mbarrier with a count of 1.\n\n    If `descs` are provided, the commit will be multicast across the CTA cluster\n    based on the shared layouts of those descriptors. This should be used when\n    the inputs to the tcgen5 MMA, including scaled-MMA scale inputs, come from\n    TMA descriptors using multicast.\n\n    Note that the completion mechanisms are guaranteed to occur sequentially in\n    the order the commit operations were issued. This means, for example:\n\n    ```mlir\n    ttng.tmem_copy\n    ttng.tc_gen5_mma\n    ttng.tc_gen5_commit %barrierA\n    ttng.tc_gen5_commit %barrierB\n    ```\n\n    `%barrierA` tracks the completion of the previous TMEM copy and MMA\n    operations, but since the commit groups are sequential, the arrive-on\n    operation on `%barrierA` is guaranteed to be performed before the arrive-on\n    operation on `%barrierB`, even though its commit group is empty.",
+    "description": "The `ttng.tc_gen5_commit` is an asynchronous operation that makes the\n    mbarrier object track the completion of prior asynchronous tcgen5\n    operations. Upon completion of the asynchronous operations, the mbarrier\n    arrive operation is performed on the mbarrier with a count of 1.\n\n    By default, this operation tracks completion of all prior asynchronous\n    tcgen5 operations. On Rubin, `early_a_release` modifies the operation\n    to track only the completion of the A operand read from shared memory for\n    a tcgen5 MMA operation.\n\n    If `descs` are provided, the commit will be multicast across the CTA cluster\n    based on the shared layouts of those descriptors. This should be used when\n    the inputs to the tcgen5 MMA, including scaled-MMA scale inputs, come from\n    TMA descriptors using multicast.\n\n    Note that the completion mechanisms are guaranteed to occur sequentially in\n    the order the commit operations were issued. This means, for example:\n\n    ```mlir\n    ttng.tmem_copy\n    ttng.tc_gen5_mma\n    ttng.tc_gen5_commit %barrierA\n    ttng.tc_gen5_commit %barrierB\n    ```\n\n    `%barrierA` tracks the completion of the previous TMEM copy and MMA\n    operations, but since the commit groups are sequential, the arrive-on\n    operation on `%barrierA` is guaranteed to be performed before the arrive-on\n    operation on `%barrierB`, even though its commit group is empty.",
     "operands": [
       { "name": "barrier", "type": "TTG_MemDescType" },
       { "name": "pred", "type": "Optional<I1>" },
       { "name": "descs", "type": "Variadic<TTG_MemDescType>" }
+    ],
+    "attributes": [
+      { "name": "early_a_release", "type": "UnitAttr" }
     ],
     "traits": [
       { "type": "AttrSizedOperandSegments" }
