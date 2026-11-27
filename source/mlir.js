@@ -18047,8 +18047,11 @@ _.spirv.SPIRVDialect = class extends _.Dialect {
             return true;
         }
         if (op === 'spirv.Load' || op === 'spv.Load') {
-            const storageClass = parser.parseString();
-            result.addAttribute('storage_class', storageClass);
+            // Untyped pointer form has no storage class string
+            const storageClass = parser.parseOptionalString();
+            if (storageClass !== null) {
+                result.addAttribute('storage_class', storageClass);
+            }
             const ptrOperand = parser.parseOperand();
             if (parser.parseOptionalLSquare()) {
                 const memoryAccess = [];
@@ -18073,10 +18076,18 @@ _.spirv.SPIRVDialect = class extends _.Dialect {
             }
             parser.parseOptionalAttrDict(result.attributes);
             if (parser.parseOptionalColon()) {
-                const type = parser.parseType();
-                const ptrType = new _.spirv.PointerType(type, storageClass);
-                parser.resolveOperand(ptrOperand, ptrType, result.operands);
-                result.addTypes([type]);
+                if (storageClass === null) {
+                    const ptrType = parser.parseType();
+                    parser.parseArrow();
+                    const type = parser.parseType();
+                    parser.resolveOperand(ptrOperand, ptrType, result.operands);
+                    result.addTypes([type]);
+                } else {
+                    const type = parser.parseType();
+                    const ptrType = new _.spirv.PointerType(type, storageClass);
+                    parser.resolveOperand(ptrOperand, ptrType, result.operands);
+                    result.addTypes([type]);
+                }
             } else {
                 parser.resolveOperand(ptrOperand, null, result.operands);
             }
@@ -18166,8 +18177,11 @@ _.spirv.SPIRVDialect = class extends _.Dialect {
             return true;
         }
         if (op === 'spirv.Store' || op === 'spv.Store') {
-            const storageClass = parser.parseString();
-            result.addAttribute('storage_class', storageClass);
+            // Untyped pointer form has no storage class string
+            const storageClass = parser.parseOptionalString();
+            if (storageClass !== null) {
+                result.addAttribute('storage_class', storageClass);
+            }
             const unresolvedOperands = [];
             unresolvedOperands.push(parser.parseOperand());
             parser.parseComma();
@@ -18194,9 +18208,17 @@ _.spirv.SPIRVDialect = class extends _.Dialect {
                 }
             }
             if (parser.parseOptionalColon()) {
-                const type = parser.parseType();
-                const ptrType = new _.spirv.PointerType(type, storageClass);
-                parser.resolveOperands(unresolvedOperands, [ptrType, type], result.operands);
+                if (storageClass === null) {
+                    const ptrType = parser.parseType();
+                    parser.parseComma();
+                    const type = parser.parseType();
+                    parser.parseOptionalAttrDict(result.attributes);
+                    parser.resolveOperands(unresolvedOperands, [ptrType, type], result.operands);
+                } else {
+                    const type = parser.parseType();
+                    const ptrType = new _.spirv.PointerType(type, storageClass);
+                    parser.resolveOperands(unresolvedOperands, [ptrType, type], result.operands);
+                }
             } else {
                 for (const unresolvedOp of unresolvedOperands) {
                     parser.resolveOperand(unresolvedOp, null, result.operands);
